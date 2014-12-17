@@ -1,0 +1,9 @@
+<h2>Howdy from Notes</h2>
+
+<ul>
+  {{#each note in controller}}
+    <li>{{#link-to 'note' note}}
+      {{note.title}}
+      {{/link-to}}</li>
+  {{/each}}
+</ul>
