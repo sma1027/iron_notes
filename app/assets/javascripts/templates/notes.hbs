@@ -1,9 +1,14 @@
-<h2>Howdy from Notes</h2>
+<h2>My Notes</h2>
 
-<ul>
-  {{#each note in controller}}
-    <li>{{#link-to 'note' note}}
-      {{note.title}}
-      {{/link-to}}</li>
-  {{/each}}
-</ul>
+  <div class="col-xs-4">
+    <ul>
+      {{#each note in controller}}
+      <li>{{#link-to 'note' note}}
+        {{note.title}}
+        {{/link-to}}</li>
+        {{/each}}
+      </ul>
+  </div>
+  <div class="col-xs-8">
+    {{outlet}}
+  </div>

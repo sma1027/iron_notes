@@ -1,26 +1,15 @@
-var App = Ember.Application.create();
+var IronNotes = Ember.Application.create();
 
-App.Router.map(function(){
-  this.resource('notes');
-  this.resource('note', {path: "/notes/:note_id"})
+IronNotes.ApplicationAdapter = DS.ActiveModelAdapter.extend()
+
+IronNotes.Router.map(function(){
+  this.resource('notes', function(){
+    this.resource('note', {path: "/:note_id"})
+  });
 })
 
-App.NotesRoute = Ember.Route.extend({
+IronNotes.NotesRoute = Ember.Route.extend({
   model: function(){
-    return [{
-      id: "1",
-      title: "Badgers enjoy popscles",
-      body: "I witnessed a badger crushing a popscile today."
-    },{
-      id: "2",
-      title: "Dogs like sawdust",
-      body: "Apparently dogs like sawdust"
-    }]
+    return this.store.find('note');
   }
 })
-
-// App.NoteRoute = Ember.Route.extend({
-  // model: function(params){
-  //   this.modelFor('notes').findBy('id', params.note_id)
-  // }
-// })
