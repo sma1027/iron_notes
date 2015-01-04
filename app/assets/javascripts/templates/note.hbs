@@ -1,4 +1,14 @@
+
+{{#if editing}}
+  <button class='btn btn-success' {{action 'saveNote'}}>Save Note</button>
+  {{input class='form-control' valueBinding='title'}}
+  {{textarea class='form-control' valueBinding='body'}}
+  {{input class='form-control' valueBinding='priorityLevel'}}
+{{else}}
+<button class='btn btn-success' {{action 'startEdit'}}>Edit</button>
 <h1>{{title}}</h1>
 <p>
   {{body}}
 </p>
+{{/if}}
+
